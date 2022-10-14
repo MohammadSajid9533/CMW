@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .MS-part{
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            height: 600px;
+        }
+        * {box-sizing: border-box}
+
+.MS-container {
+    padding: 16px;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.MS-regButton {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.MS-regButton:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.MS-reg {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 16px;
+}
+.img{
+    width: 100%;
+    height: 700px;
+}
+    </style>
+</head>
+<body>
+    <div class="MS-part">
+       <div>
+            <img class="img" src="C:\Users\asif\Desktop\Self code\edu.png">
+       </div> 
+    <form>
+        <div class="MS-container">
+          <h1>Login Dashboard</h1>
+          <hr>
+      
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+      
+          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+          <button type="submit" class="MS-regButton">Login</button>
+        </div>
+      
+        <div class="MS-reg">
+          <p>If you are new Customer ? <a href="C:\Users\asif\Desktop\codes\register.html"> Register here</a>.</p>
+          
+        </div>
+      </form>
+    </div>
+</body>
+</html>
