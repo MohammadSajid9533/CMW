@@ -5,92 +5,195 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .MS-part{
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            height: 600px;
+<style>* 
+  {box-sizing: border-box}
+        input[type=email],input[type=number],input[type=text], input[type=password], input[type=date]{
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+      }
+      .grid{
+        display: grid;
+        grid-template-columns: 1.5fr 2fr 1.5fr;
+      }
+
+   .side{
+    background-color: rgb(73, 65, 55);
+   }
+  .formdesign{
+    margin: 10px 20px;
+    font-weight: bold;
+
+  }
+  .p,h1{
+    margin-left: 22px;
+  }
+  .button{
+      background-color: #04AA6D;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 22px;
+      border: none;
+      cursor: pointer;
+      width: 80%;
+      opacity: 0.9;
+  }
+  .cancel{
+      background-color: #d62121;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 22px;
+      border: none;
+      cursor: pointer;
+      width: 50%;
+      opacity: 0.9;
+  }
+  
+  .button:hover {
+          opacity:1;
+          
         }
-        * {box-sizing: border-box}
 
-.MS-container {
-    padding: 16px;
-}
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-.MS-regButton {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.MS-regButton:hover {
-  opacity:1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.MS-reg {
-  background-color: #f1f1f1;
-  text-align: center;
-  padding: 16px;
-}
-.img{
-    width: 100%;
-    height: 700px;
-}
-    </style>
+  .forerror{
+    color: brown;
+  }
+</style>
 </head>
 <body>
-    <div class="MS-part">
-       <div>
-            <img class="img" src="C:\Users\asif\Desktop\Self code\edu.png">
-       </div> 
-    <form>
-        <div class="MS-container">
-          <h1>Login Dashboard</h1>
-          <hr>
+<script>
+function clearErrors(){
+  errors= document.getElementsByClassName('forerror');
+  for(let item of errors){
+    item.innerHTML= "";
+  }
+}
+
+function seterror(id , error){
+  element = document.getElementById(id);
+  element.getElementsByClassName('forerror')[0].innerHTML = error;
+}
+
+
+function ValidateForm(){
+  var retval= true;
+  clearErrors();
+  var name =document.forms['myForm']["fname"].value;
+    if(name.length <5){
+      seterror("fname", "* Enter valid name");
+      retval = false;
+    }
+    var Surname =document.forms['myForm']["sname"].value;
+    if(name.length <5){
+      seterror("sname", "* Enter valid Surname");
+      retval = false;
+    }
+    var phone =document.forms['myForm']["Phone"].value;
+    if(phone.length != 10){
+      seterror("Phone", "* Phone no. should have 10 digits");
+      retval = false;
+    }
+    if(isNaN(phone)){
+      seterror("Phone", "* Enter the Numeric Number")
+    }
+
+    var email =document.forms['myForm']["femail"].value;
+    var atposition= email.indexOf("@");  
+    var dotposition= email.lastIndexOf(".");  
+    
+    if(atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){
+      seterror("femail", "* Enter the Valid email");
+      retval = false;
+    }
+
+    var password = document.forms['myForm']["password"].value;
+    if(password.length < 8){
+      seterror("password", "* Password is too small");
+      retval = false;
+    }
+    var cfm =document.forms['myForm']["cfm"].value;
+    if(cfm != password){
+      seterror("cfm", "* Password did not match");
+      retval = false;
+    }
+    var address =document.forms['myForm']["address"].value;
+    if(address.length < 6 ){
+      seterror("address", "* Enter valid address");
+      retval = false;
+    }
+      return retval;
+  }
+</script>
+
+<div class="grid">
+<div class="side"> </div>
+<div>  <h1>Sign Up</h1>
+  <p class="p">Please fill in this form to create an account.</p>
+  <hr> 
+  <form action="css.php" name="myForm" method="post">
+    <div class="formdesign" id="fname">
+      First Name: <span class="forerror">
+      </span>
+      <input type="text" name="fname">
       
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" id="email" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-      
-          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-          <button type="submit" class="MS-regButton">Login</button>
-        </div>
-      
-        <div class="MS-reg">
-          <p>If you are new Customer ? <a href="C:\Users\asif\Desktop\codes\register.html"> Register here</a>.</p>
-          
-        </div>
-      </form>
     </div>
+
+    <div class="formdesign" id="sname">
+      Surname Name: <span class="forerror">
+      </span>
+      <input type="text" name="sname">
+      
+    </div>
+
+    <div class="formdesign" id="dob">
+      DOB: <span class="forerror">
+      </span>
+      <input type="date" name="dob" required>
+      
+    </div>
+
+    <div class="formdesign" id="address">
+      Permanent address: <span class="forerror">
+      </span>
+      <input type="text" name="address" >
+      
+    </div>
+
+    <div class="formdesign" id="femail">
+      Email: <span class="forerror">
+      </span>
+    <input type="email" name="femail">
+    </div>
+    
+    <div class="formdesign" id="Phone">
+      Phone: <span class="forerror">
+      </span>
+    <input type="number" name="Phone">
+    </div>
+    
+    <div class="formdesign" id="password">
+      Password: <span class="forerror">
+      </span>
+      <input type="password" name="password">
+    </div>
+    
+    <div class="formdesign" id="cfm">
+      Confirm Password: <span class="forerror">
+      </span>
+    <input type="password" name="cfm">
+    </div>
+<span class="formdesign"><input  type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me</span>
+
+<p class="p">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+  
+    <input class="button" type="submit"  onclick="return ValidateForm()" value="Submit">
+
+    <input class="cancel" type="button" value="Cancel">
+      
+</form></div>
+
+<div class="side"> </div></div>
 </body>
 </html>
